@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Admin Panel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Login Form -->
+        <div class="login-container" id="login-container">
+            <div class="login-form">
+                <h2>Admin Login</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div class="admin-panel" id="admin-panel" style="display: none;">
+            <!-- Sidebar -->
+            <div class="sidebar" id ="sidebar">
+                <div class="brand">
+                    <span class="hamburger" id="hamburger">☰</span>
+                    <h2>Restaurant Admin</h2>
+                </div>
+                <ul class="nav-links">
+                    <li class="nav-item active" data-target="dashboard">
+                        <span class="icon">📊</span>
+                        <span class="link-text">Dashboard</span>
+                    </li>
+                    <li class="nav-item" data-target="menu-items">
+                        <span class="icon">🍽️</span>
+                        <span class="link-text">Menu Items</span>
+                    </li>
+                    <li class="nav-item" data-target="bookings">
+                        <span class="icon">📅</span>
+                        <span class="link-text">Bookings</span>
+                    </li>
+                    <li class="nav-item" data-target="feedback">
+                        <span class="icon">💬</span>
+                        <span class="link-text">Feedback</span>
+                    </li>
+                    <li class="nav-item" data-target="payments">
+                        <span class="icon">💰</span>
+                        <span class="link-text">Payments</span>
+                    </li>
+                    <li class="nav-item" data-target="profile">
+                        <span class="icon">👤</span>
+                        <span class="link-text">Profile</span>
+                    </li>
+                    <li class="nav-item" data-target="settings">
+                        <span class="icon">⚙️</span>
+                        <span class="link-text">Settings</span>
+                    </li>
+                    <li class="nav-item" id="logout-btn">
+                        <span class="icon">🚪</span>
+                        <span class="link-text">Logout</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <div class="top-bar">
+                    <div class="user-info">
+                        <span class="user-name">Admin User</span>
+                        <div class="user-avatar">A</div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Section -->
+                <div class="content-section active" id="dashboard">
+                    <h2>Dashboard</h2>
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <h3>Total Orders</h3>
+                            <p class="stat-value">245</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Today's Bookings</h3>
+                            <p class="stat-value">18</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>New Feedback</h3>
+                            <p class="stat-value">7</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Revenue</h3>
+                            <p class="stat-value">$3,245</p>
+                        </div>
+                    </div>
+                    <div class="recent-activity">
+                        <h3>Recent Activity</h3>
+                        <ul class="activity-list">
+                            <li class="activity-item">
+                                <span class="activity-time">10:30 AM</span>
+                                <span class="activity-text">New booking for Table #5</span>
+                            </li>
+                            <li class="activity-item">
+                                <span class="activity-time">09:45 AM</span>
+                                <span class="activity-text">New menu item added: Grilled Salmon</span>
+                            </li>
+                            <li class="activity-item">
+                                <span class="activity-time">Yesterday</span>
+                                <span class="activity-text">Payment received for Order #1234</span>
+                            </li>
+                            <li class="activity-item">
+                                <span class="activity-time">Yesterday</span>
+                                <span class="activity-text">New feedback from customer John D.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Menu Items Section -->
+                <div class="content-section" id="menu-items">
+                    <h2>Menu Items</h2>
+                    <button class="btn btn-primary" id="add-menu-item-btn">Add New Item</button>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Margherita Pizza</td>
+                                    <td>Main Course</td>
+                                    <td>$12.99</td>
+                                    <td>
+                                        <button class="btn btn-small btn-edit">Edit</button>
+                                        <button class="btn btn-small btn-delete">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Caesar Salad</td>
+                                    <td>Appetizer</td>
+                                    <td>$8.99</td>
+                                    <td>
+                                        <button class="btn btn-small btn-edit">Edit</button>
+                                        <button class="btn btn-small btn-delete">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Chocolate Cake</td>
+                                    <td>Dessert</td>
+                                    <td>$6.99</td>
+                                    <td>
+                                        <button class="btn btn-small btn-edit">Edit</button>
+                                        <button class="btn btn-small btn-delete">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Add Menu Item Modal -->
+                    <div class="modal" id="menu-item-modal">
+                        <div class="modal-content">
+                            <span class="close-modal">&times;</span>
+                            <h3>Add Menu Item</h3>
+                            <form id="menu-item-form">
+                                <div class="form-group">
+                                    <label for="item-name">Name</label>
+                                    <input type="text" id="item-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="item-category">Category</label>
+                                    <select id="item-category" required>
+                                        <option value="">Select Category</option>
+                                        <option value="Appetizer">Appetizer</option>
+                                        <option value="Main Course">Main Course</option>
+                                        <option value="Dessert">Dessert</option>
+                                        <option value="Beverage">Beverage</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="item-price">Price</label>
+                                    <input type="number" id="item-price" step="0.01" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="item-description">Description</label>
+                                    <textarea id="item-description" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Item</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bookings Section -->
+                <div class="content-section" id="bookings">
+                    <h2>Table Bookings</h2>
+                    <button class="btn btn-primary" id="add-booking-btn">Add New Booking</button>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Customer</th>
+                                    <th>Table</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Guests</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>John Smith</td>
+                                    <td>Table 3</td>
+                                    <td>2025-03-17</td>
+                                    <td>7:00 PM</td>
+                                    <td>4</td>
+                                    <td><span class="status confirmed">Confirmed</span></td>
+                                    <td>
+                                        <button class="btn btn-small btn-edit">Edit</button>
+                                        <button class="btn btn-small btn-delete">Cancel</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Sarah Johnson</td>
+                                    <td>Table 7</td>
+                                    <td>2025-03-17</td>
+                                    <td>8:30 PM</td>
+                                    <td>2</td>
+                                    <td><span class="status confirmed">Confirmed</span></td>
+                                    <td>
+                                        <button class="btn btn-small btn-edit">Edit</button>
+                                        <button class="btn btn-small btn-delete">Cancel</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Michael Brown</td>
+                                    <td>Table 5</td>
+                                    <td>2025-03-18</td>
+                                    <td>6:15 PM</td>
+                                    <td>6</td>
+                                    <td><span class="status pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-small btn-edit">Edit</button>
+                                        <button class="btn btn-small btn-delete">Cancel</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Add Booking Modal -->
+                    <div class="modal" id="booking-modal">
+                        <div class="modal-content">
+                            <span class="close-modal">&times;</span>
+                            <h3>Add Booking</h3>
+                            <form id="booking-form">
+                                <div class="form-group">
+                                    <label for="customer-name">Customer Name</label>
+                                    <input type="text" id="customer-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="table-number">Table</label>
+                                    <select id="table-number" required>
+                                        <option value="">Select Table</option>
+                                        <option value="Table 1">Table 1</option>
+                                        <option value="Table 2">Table 2</option>
+                                        <option value="Table 3">Table 3</option>
+                                        <option value="Table 4">Table 4</option>
+                                        <option value="Table 5">Table 5</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-date">Date</label>
+                                    <input type="date" id="booking-date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-time">Time</label>
+                                    <input type="time" id="booking-time" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="guest-count">Number of Guests</label>
+                                    <input type="number" id="guest-count" min="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-status">Status</label>
+                                    <select id="booking-status" required>
+                                        <option value="Confirmed">Confirmed</option>
+                                        <option value="Pending">Pending</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Booking</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Section -->
+                <div class="content-section" id="feedback">
+                    <h2>Customer Feedback</h2>
+                    <div class="feedback-filters">
+                        <select id="feedback-filter">
+                            <option value="all">All Feedback</option>
+                            <option value="new">New</option>
+                            <option value="read">Read</option>
+                        </select>
+                    </div>
+                    <div class="feedback-list">
+                        <div class="feedback-item unread">
+                            <div class="feedback-header">
+                                <h4>John Doe</h4>
+                                <span class="feedback-date">Today, 10:30 AM</span>
+                            </div>
+                            <div class="feedback-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star empty">★</span>
+                            </div>
+                            <p class="feedback-text">The food was excellent, but the service was a bit slow. Overall a good experience.</p>
+                            <div class="feedback-actions">
+                                <button class="btn btn-small">Mark as Read</button>
+                                <button class="btn btn-small">Reply</button>
+                            </div>
+                        </div>
+                        <div class="feedback-item">
+                            <div class="feedback-header">
+                                <h4>Sarah Johnson</h4>
+                                <span class="feedback-date">Yesterday, 7:15 PM</span>
+                            </div>
+                            <div class="feedback-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <p class="feedback-text">Amazing experience! The food was delicious and the staff was very friendly. Will definitely come back!</p>
+                            <div class="feedback-actions">
+                                <button class="btn btn-small">Mark as Unread</button>
+                                <button class="btn btn-small">Reply</button>
+                            </div>
+                        </div>
+                        <div class="feedback-item">
+                            <div class="feedback-header">
+                                <h4>Michael Brown</h4>
+                                <span class="feedback-date">Mar 15, 2025</span>
+                            </div>
+                            <div class="feedback-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star empty">★</span>
+                                <span class="star empty">★</span>
+                            </div>
+                            <p class="feedback-text">The food was good but a bit overpriced. The ambiance was nice though.</p>
+                            <div class="feedback-actions">
+                                <button class="btn btn-small">Mark as Unread</button>
+                                <button class="btn btn-small">Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payments Section -->
+                <div class="content-section" id="payments">
+                    <h2>Payments</h2>
+                    <div class="payment-summary">
+                        <div class="stat-card">
+                            <h3>Today's Revenue</h3>
+                            <p class="stat-value">$1,245.50</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>This Week</h3>
+                            <p class="stat-value">$8,732.25</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>This Month</h3>
+                            <p class="stat-value">$32,456.75</p>
+                        </div>
+                    </div>
+                    <h3>Recent Transactions</h3>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Method</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>P-1001</td>
+                                    <td>John Smith</td>
+                                    <td>Today, 2:30 PM</td>
+                                    <td>$78.50</td>
+                                    <td>Credit Card</td>
+                                    <td><span class="status completed">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>P-1002</td>
+                                    <td>Sarah Johnson</td>
+                                    <td>Today, 1:15 PM</td>
+                                    <td>$45.75</td>
+                                    <td>Cash</td>
+                                    <td><span class="status completed">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>P-1003</td>
+                                    <td>Michael Brown</td>
+                                    <td>Today, 12:45 PM</td>
+                                    <td>$112.30</td>
+                                    <td>Credit Card</td>
+                                    <td><span class="status pending">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td>P-1004</td>
+                                    <td>Emily Davis</td>
+                                    <td>Yesterday, 7:30 PM</td>
+                                    <td>$94.20</td>
+                                    <td>Debit Card</td>
+                                    <td><span class="status completed">Completed</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="content-section" id="profile">
+                    <h2>Profile</h2>
+                    <div class="profile-container">
+                        <div class="profile-header">
+                            <div class="profile-avatar">A</div>
+                            <div class="profile-info">
+                                <h3>Admin User</h3>
+                                <p>admin@restaurant.com</p>
+                                <p>Restaurant Manager</p>
+                            </div>
+                        </div>
+                        <div class="profile-details">
+                            <h3>Personal Information</h3>
+                            <form id="profile-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="profile-name">Full Name</label>
+                                        <input type="text" id="profile-name" value="Admin User">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="profile-email">Email</label>
+                                        <input type="email" id="profile-email" value="admin@restaurant.com">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="profile-phone">Phone</label>
+                                        <input type="tel" id="profile-phone" value="(555) 123-4567">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="profile-role">Role</label>
+                                        <input type="text" id="profile-role" value="Restaurant Manager" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-bio">Bio</label>
+                                    <textarea id="profile-bio" rows="3">Restaurant manager with 5+ years of experience in the food industry.</textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Section -->
+                <div class="content-section" id="settings">
+                    <h2>Settings</h2>
+                    <div class="settings-container">
+                        <div class="settings-section">
+                            <h3>Account Settings</h3>
+                            <form id="password-form">
+                                <div class="form-group">
+                                    <label for="current-password">Current Password</label>
+                                    <input type="password" id="current-password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="new-password">New Password</label>
+                                    <input type="password" id="new-password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-password">Confirm New Password</label>
+                                    <input type="password" id="confirm-password" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Change Password</button>
+                            </form>
+                        </div>
+                        <div class="settings-section">
+                            <h3>Notification Settings</h3>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Email Notifications</h4>
+                                    <p>Receive email notifications for new bookings, feedback, etc.</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>SMS Notifications</h4>
+                                    <p>Receive SMS alerts for important updates.</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Browser Notifications</h4>
+                                    <p>Receive browser notifications when logged in.</p>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
