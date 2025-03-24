@@ -16,7 +16,7 @@ This is a simple Admin Panel built using **HTML, CSS, and JavaScript**. The pane
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/admin-panel.git
+   git clone https://github.com/rrrsahil/admin-panel.git
    ```
 
 2. Navigate to the project folder:
